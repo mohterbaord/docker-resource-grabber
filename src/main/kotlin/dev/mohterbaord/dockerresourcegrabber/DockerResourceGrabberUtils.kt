@@ -4,6 +4,8 @@ import com.github.dockerjava.core.DockerClientBuilder
 import dev.mohterbaord.dockerresourcegrabber.domain.Image
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
 
 class DockerResourceGrabberUtils {
 
@@ -16,6 +18,10 @@ class DockerResourceGrabberUtils {
                     image.grabs.forEach { grab ->
                         val copyCmd = dockerClient.copyArchiveFromContainerCmd(response.id, grab.src)
                         TarArchiveInputStream(copyCmd.exec()).use { inputStream ->
+                            val dstDir = File(grab.dst).parent
+                            if ((dstDir != null) && Files.notExists(Paths.get(dstDir))) {
+                                File(dstDir).mkdirs()
+                            }
                             TarUtils.unTar(inputStream, File(grab.dst))
                         }
                     }

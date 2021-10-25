@@ -3,7 +3,7 @@ package dev.mohterbaord.dockerresourcegrabber.gradle
 import org.gradle.testfixtures.ProjectBuilder
 import org.junit.jupiter.api.Test
 
-class DockerResourceGrabberPluginTest {
+class DockerResourceGrabberTest {
 
     @Test
     fun test() {

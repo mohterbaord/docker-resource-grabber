@@ -14,13 +14,13 @@ gradlePlugin {
             id = "dev.mohterbaord.docker-resource-grabber"
             displayName = "Docker Resource Grabber"
             description = "Copies resources from Docker containers"
-            implementationClass = "dev.mohterbaord.dockerresourcegrabber.gradle.DockerResourceGrabberPlugin"
+            implementationClass = "dev.mohterbaord.dockerresourcegrabber.gradle.DockerResourceGrabber"
         }
     }
 }
 
 pluginBundle {
-    website = "https://www.gradle.org/"
+    website = "https://github.com/mohterbaord/docker-resource-grabber"
     vcsUrl = "https://github.com/mohterbaord/docker-resource-grabber"
     tags = listOf("docker")
 }
@@ -30,10 +30,10 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.docker-java:docker-java:3.2.8")
-    implementation("org.apache.commons:commons-compress:1.20")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    implementation("com.github.docker-java:docker-java:3.2.12")
+    implementation("org.apache.commons:commons-compress:1.21")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
 }
 
 tasks.getByName<Test>("test") {
